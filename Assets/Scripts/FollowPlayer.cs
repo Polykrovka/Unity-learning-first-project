@@ -1,15 +1,31 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowPlayer: MonoBehaviour
 {
     public GameObject player;
-    private Vector3 offset = new Vector3(0, 5, -10);
+    private Vector3 offset1 = new Vector3(0, 2, 1);
+    private Vector3 offset2 = new Vector3(0, 5, -10);
+    private bool isViewButtonPressed = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    // Update is called once per frame
-    void LateUpdate()
+// Update is called once per frame
+void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            isViewButtonPressed = !isViewButtonPressed;
+        }
+
+        if(isViewButtonPressed)
+        {
+            transform.position = player.transform.position + offset1;
+        }
+        else
+        {
+            transform.position = player.transform.position + offset2;
+        }
+        
+        
+
     }
 }
